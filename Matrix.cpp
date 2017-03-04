@@ -1,7 +1,11 @@
 #include "Matrix.h"
 #include <iostream>
 #include <fstream>
-using namespace std;
+#include <cstdlib>
+using std::cout;
+using std::endl;
+using std::ios_base;
+using std::ifstream;
 
 
 Matrix::Matrix()
@@ -25,6 +29,17 @@ Matrix::Matrix(size_t rows, size_t cols, int *data)
 	_rows = rows;
 	_cols = cols;
 	_data = data;
+}
+
+
+Matrix::Matrix(const Matrix& m)
+{
+	_rows = m._rows;
+	_cols = m._cols;
+	_data = new int[_rows*_cols];
+	memcpy(_data, m._data, _rows * _cols * sizeof(_data[0]));
+	/*for (size_t i = 0; i < _rows*_cols; i++)
+		_data[i] = m._data[i];*/
 }
 
 
@@ -146,6 +161,8 @@ Matrix& Matrix::operator=(const Matrix& m)
 	_cols = m._cols;
 	_data = new int[_rows*_cols];
 	memcpy(_data, m._data, _rows * _cols * sizeof(_data[0]));
+	/*for (size_t i = 0; i < _rows*_cols; i++)
+		_data[i] = m._data[i];*/
 
 	return *this;
 }

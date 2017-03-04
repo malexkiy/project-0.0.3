@@ -5,6 +5,8 @@ int main(void)
 {
 	Matrix a(7, 2), b(2, 2), c, d;
 
+	Matrix e(a);
+
 	a.fill("a.mtx");
 	b.fill("b.mtx");
 

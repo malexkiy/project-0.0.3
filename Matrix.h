@@ -9,6 +9,7 @@ private:
 
 public:
 	Matrix();
+	Matrix(const Matrix&);
 	Matrix(size_t, size_t);
 	~Matrix();
 
